@@ -1,0 +1,113 @@
+//void main()
+//{
+//int long x;
+//x=4;
+//typedef int long l;
+//l x;
+//int y[5];
+//cout<<y<<endl;
+
+
+#include<iostream>
+#include<string>
+using namespace std;
+class person
+{
+protected:
+string name;
+int ssn;
+string address;
+public:
+
+//destructor
+virtual ~person()
+{
+cout << "Base Destructor called" << endl;
+
+}
+
+person(string, int, string);
+person(string);
+person()
+{
+name = "";
+ssn = 0;
+address = "";
+}
+void input();
+void virtual output();
+};
+person::person(string n, int s, string a)
+{
+name = n;
+
+ssn = s;
+address = a;
+}
+person::person(string n)
+{
+name = n;
+}
+void person::input()
+{
+cout << "Enter name and ssn" << endl;
+cin >> this->name >> ssn;
+}
+void person::output()
+{
+cout << name << " " << ssn <<" "<<address<< endl;
+}
+
+class student : public virtual person
+{
+
+private:
+string school;
+int s_id;
+
+public:
+void output()//polymorphism-overriding base class function
+{
+person::output();
+cout << school << " " << s_id << endl;
+}
+student();
+student(string, int, string, string, int);
+~student()
+{
+cout << "Derived destructor" << endl;
+}
+};
+student::student() :person(), s_id(44)
+{
+school = "";
+}
+student::student(string n, int s, string a, string sc, int i) :
+person(n, s, a), school(sc), s_id(44)
+{
+//s_id=44;
+//school = sc;
+}
+class worker :public virtual person
+{
+};
+
+class student_worker :public student, public worker
+{
+};
+
+ 
+
+
+void main()
+{
+person *s[3] = { new student("jOHN",111,"123 main street","mtsac",1), new person("mary",1,"blabla") };
+for (int i = 0; i < 2; i++)
+{
+s[i]->output();
+}
+for (int i = 0; i < 3; i++)
+{
+delete s[i];
+}
+}
