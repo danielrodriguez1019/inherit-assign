@@ -1,3 +1,11 @@
+/*Define a base class person that will contain universal information, 
+including: name, address, birth date, gender and identification (student, worker etc). 
+Derive from this class the following classes: Student, Worker,Student_worker (derived from student and worker) 
+Add variable school to student and company to worker class. 
+In the main function create structure that will be able to hold all types of objects. 
+Let user enter several objects of different type (create those objects dynamically) 
+and sort the structure by gender and by type. */
+
 //void main()
 //{
 //int long x;
